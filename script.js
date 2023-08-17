@@ -6,9 +6,9 @@ let firstNumber = "";
 let operator = "";     
 let secondNumber = ""; 
 let displayValue = "";
-let previousCalculation = null;
+let previousCalculation = "";
 
-//Add event listeners to number buttons: Update displayValue with clicked number 
+//Add event listeners to number buttons
 const numberButtons = document.querySelectorAll(".number");
 numberButtons.forEach(button => {
     button.addEventListener("click", () => {
@@ -21,7 +21,7 @@ const operatorButtons = document.querySelectorAll(".operator");
 operatorButtons.forEach(button => {
     button.addEventListener("click", () => {
         handleOperator(button.textContent);
-    }, operate);
+    });
 });
 
 //Add event listener to equals button
@@ -45,7 +45,7 @@ function updateDisplay (number) {
     //check if display already contains a decimal point
     if (number === "." && displayValue.includes(".")) {
         return;
-    }
+    };
     //Append the clicked number to the current display value
     displayValue += number;
     display.textContent = displayValue;
@@ -53,25 +53,16 @@ function updateDisplay (number) {
 
 //Function to handle operator button clicks
 function handleOperator(operatorClicked) {
-    operator = operatorClicked;
-    firstNumber = displayValue;
-    displayValue = "";
     if (previousCalculation) {
-        firstNumber = previousCalculation;
         operate();
-    }
-    else {
-        firstNumber = displayValue;
-    }
-}
+    } 
+    operator = operatorClicked;
+    firstNumber = displayValue; 
+    displayValue = "";
+};
 
 //Function to perform the calculation
 function operate() {
-    if (previousCalculation) {
-        firstNumber = previousCalculation;
-    } else {
-        firstNumber = displayValue;
-    }
     secondNumber = displayValue;
     let result;
     switch (operator) {
@@ -88,16 +79,18 @@ function operate() {
             if (secondNumber === "0") {
                 display.textContent = "Error: Cannot divide by zero";
                 return;
-            }
+            };
             result = divide(parseFloat(firstNumber), parseFloat(secondNumber));
             break;
         default:
             return;
-    }
+    };
     previousCalculation = result;
+    displayValue = previousCalculation % 1 === 0 ? previousCalculation.toFixed(0) : previousCalculation.toFixed(2);
     displayValue = result % 1 === 0 ? result.toFixed(0) : result.toFixed(2);
     display.textContent = displayValue;
-}
+};
+
 
 //Function to clear the calculator
 function clear() {
@@ -106,8 +99,8 @@ function clear() {
     secondNumber = "";
     displayValue = "";
     display.textContent = "0";
-    previousCalculation = null;
-}
+    previousCalculation = "";
+};
 
 //Function to add a decimal point
 function addDecimal() {
@@ -115,25 +108,24 @@ function addDecimal() {
         displayValue += ".";
         display.textContent = displayValue;
     }
-}
+};
 
 //Function to remove the last character from displayValue
 function removeLastCharacter() {
     displayValue = displayValue.slice(0, -1);
     display.textContent = displayValue;
-}
+};
 
 //Basic math operation function
 function add(a, b) {
     return a + b;
-}
+};
 function subtract(a, b) {
     return a - b;
-}
+};
 function multiply(a, b) {
     return a * b;
-}
+};
 function divide(a, b) {
     return a / b;
-}
-
+};
