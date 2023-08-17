@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,38 +8,51 @@
     <script src="./script.js" defer></script>
     <title>Calculator</title>
 </head>
+
 <body>
+
     <header class="header">
         <h1>Calculator</h1>
     </header>
+
     <div class="content">
-        <div id="calculator">
-            <div id="display">0</div>
+
+        <section id="calculator">
+            <output id="display">0</output>
+
             <div id="keypad">
-                <button class="operator">÷</button>
-                <button id="backspace">&#x232B;</button>
-                <button id="clear">Clear</button><br>
-                <button class="number">7</button>
-                <button class="number">8</button>
-                <button class="number">9</button>
-                <button class="operator">x</button>
-                <button class="number">4</button>
-                <button class="number">5</button>
-                <button class="number">6</button>
-                <button class="operator">-</button>
-                <button class="number">1</button>
-                <button class="number">2</button>
-                <button class="number">3</button>
-                <button class="operator">+</button>
-                <button class="number">0</button>
-                <button id="decimal">.</button>
-                <button id="equals">=</button>
+                <button class="operator divide" aria-label="Divide">÷</button>
+                <button id="backspace" aria-label="Backspace">&#x232B;</button>
+                <button id="clear" aria-label="Clear">Clear</button><br>
+
+                <button class="number" aria-label="Number 7">7</button>
+                <button class="number" aria-label="Number 8">8</button>
+                <button class="number" aria-label="Number 9">9</button>
+                <button class="operator multiply" aria-label="Multiply">x</button>
+
+                <button class="number" aria-label="Number 4">4</button>
+                <button class="number" aria-label="Number 5">5</button>
+                <button class="number" aria-label="Number 6">6</button>
+                <button class="operator subtract" aria-label="Subtract">-</button>
+
+                <button class="number" aria-label="Number 1">1</button>
+                <button class="number" aria-label="Number 2">2</button>
+                <button class="number" aria-label="Number 3">3</button>
+                <button class="operator add" aria-label="Add">+</button>
+
+                <button class="number" aria-label="Number 0">0</button>
+                <button id="decimal" aria-label="Decimal">.</button>
+                <button id="equals" aria-label="Equals">=</button>
             </div>
-        </div>
+
+        </section>
+        
     </div>
+    
     <footer class="footer">
         &copy; 2023 by ProsperJohn9. All rights reserved.
     </footer>
     
 </body>
+
 </html>
