@@ -6,6 +6,7 @@ let firstNumber = "";
 let operator = "";     
 let secondNumber = ""; 
 let displayValue = "";
+let previousCalculation = null;
 
 //Add event listeners to number buttons: Update displayValue with clicked number 
 const numberButtons = document.querySelectorAll(".number");
@@ -20,7 +21,7 @@ const operatorButtons = document.querySelectorAll(".operator");
 operatorButtons.forEach(button => {
     button.addEventListener("click", () => {
         handleOperator(button.textContent);
-    });
+    }, operate);
 });
 
 //Add event listener to equals button
@@ -55,10 +56,22 @@ function handleOperator(operatorClicked) {
     operator = operatorClicked;
     firstNumber = displayValue;
     displayValue = "";
+    if (previousCalculation) {
+        firstNumber = previousCalculation;
+        operate();
+    }
+    else {
+        firstNumber = displayValue;
+    }
 }
 
 //Function to perform the calculation
 function operate() {
+    if (previousCalculation) {
+        firstNumber = previousCalculation;
+    } else {
+        firstNumber = displayValue;
+    }
     secondNumber = displayValue;
     let result;
     switch (operator) {
@@ -81,6 +94,7 @@ function operate() {
         default:
             return;
     }
+    previousCalculation = result;
     displayValue = result % 1 === 0 ? result.toFixed(0) : result.toFixed(2);
     display.textContent = displayValue;
 }
@@ -92,6 +106,7 @@ function clear() {
     secondNumber = "";
     displayValue = "";
     display.textContent = "0";
+    previousCalculation = null;
 }
 
 //Function to add a decimal point
