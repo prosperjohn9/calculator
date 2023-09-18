@@ -13,7 +13,7 @@ Desktop View:
 
 
 
-This project was created for the Calculator assignment as part of The Odin Project curriculum.
+This project was created for the [Calculator](https://www.theodinproject.com/lessons/foundations-calculator) assignment as part of The Odin Project curriculum.
 
 
 
