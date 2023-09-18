@@ -63,6 +63,9 @@ function handleOperator(operatorClicked) {
 
 //Function to perform the calculation
 function operate() {
+    if (operator === "" || firstNumber === "" || displayValue === "") {
+        return;
+    }
     secondNumber = displayValue;
     let result;
     switch (operator) {
@@ -89,6 +92,11 @@ function operate() {
     displayValue = previousCalculation % 1 === 0 ? previousCalculation.toFixed(0) : previousCalculation.toFixed(2);
     displayValue = result % 1 === 0 ? result.toFixed(0) : result.toFixed(2);
     display.textContent = displayValue;
+
+    // Reset the state for next calculation
+    firstNumber = previousCalculation;
+    operator = "";
+    secondNumber = "";
 };
 
 
